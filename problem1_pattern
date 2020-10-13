@@ -1,8 +1,9 @@
+/* satyendra kumar*/
 #include <iostream>
 using namespace std;
 int main() {
     int num;
-    cin>>num;  // enter any number 
+    cin>>num;  // enter any number for example 7 here.
 
     // printing 1st half
     for(int i=1;i<=num;i++)

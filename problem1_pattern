@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int num;
+    cin>>num;  // enter any number 
+
+    // printing 1st half
+    for(int i=1;i<=num;i++)
+    {
+        
+        for(int j=i;j<=num;j++)cout<<j<<" ";     // printing spaces
+
+        cout<<endl;
+
+        if(i!=num)
+        for(int k=1;k<=i;k++)cout<<" ";     // only print numbers until we reach num
+    }
+
+
+    //printing second half
+
+    for(int i=num-1;i>=1;i--)
+    {
+
+        for(int k=1;k<i;k++)cout<<" ";      //spaces
+
+        for(int j=i;j<=num;j++)cout<<j<<" ";
+
+        cout<<endl;
+    }
+}

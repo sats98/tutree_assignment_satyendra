@@ -1,0 +1,56 @@
+/* satyendra kumar*/
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> findSubs(string s, string p) {
+        unordered_map<char,int> pat;    // for storing pattern characters
+
+        for(auto x:p)pat[x]++;
+        int totalcount=p.length();
+
+        unordered_map<char,int> smap;   // for storing string characters
+        int matchcount=0;               // count of matching characters
+        
+        for(int i=0;i<totalcount;i++)
+        {
+            if(pat[s[i]] && pat[s[i]] > smap[s[i]])matchcount++; 
+            smap[s[i]]++;
+        }
+        vector<int> ans;
+        int i;
+
+        for(i=p.length();i<s.length();i++)
+        {
+            if(matchcount==totalcount)
+            {
+               ans.push_back(i-p.length());      // storing indices of those who match 
+            }
+            
+            if(pat[s[i-p.length()]] && pat[s[i- p.length()]] >=smap[s[i-p.length()]])matchcount--;
+            smap[s[i-p.length()]]--;
+            
+            if(pat[s[i]] && pat[s[i]] >smap[s[i]])matchcount++;
+
+            smap[s[i]]++;
+        }
+        
+        
+        if(matchcount==totalcount)
+            {
+               ans.push_back(i-p.length()); 
+            }
+        
+        return ans;
+    }
+
+
+
+int main() {
+
+   string str,pat;
+   cin>>str>>pat;
+   vector<int> ans=findSubs(str,pat);
+
+   for(int i=0;i<ans.size();i++)
+   cout<<ans[i]<<" ";
+}
